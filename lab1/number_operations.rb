@@ -1,7 +1,7 @@
 # 4
 
 # 1 метод
-def count_inter_primes(num)
+def count_inter_primes_divisors(num)
 	count = 0
 
 	(1..num).each do |i|
@@ -20,9 +20,27 @@ def count_inter_primes(num)
 			count += 1
 		end
 	end
+	
 	count
+end
+
+# 2 метод
+def calc_num_digits_sum_with_common_divisor(num, divisor)
+	sum = 0
+
+	num.abs.digits.each do |digit|
+		if digit % divisor == 0
+			sum += digit
+		end
+	end
+
+	sum
 end
 
 puts "введите число чтобы получить количество взаимо простых делителей: "
 num = STDIN.gets.to_i
-puts "%d" % count_inter_primes(num)
+puts count_inter_primes_divisors(num)
+
+puts "введите число для подсчета суммы цифр делящихся на 3: "
+num = STDIN.gets.to_i
+puts calc_num_digits_sum_with_common_divisor(num, 3)
